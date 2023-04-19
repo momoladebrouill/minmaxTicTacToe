@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #define VIDE 0
 #define CROA 1
 #define ROND 2
+
 #define AT(X,Y) 2*X+6*Y
 
 typedef signed long int plateau;
-
-
 
 plateau put_at(plateau p,int x, int y,int v){
     return p | (v+1)<<AT(x,y);
@@ -41,15 +41,15 @@ int minmax(plateau plat,int turn,int * bestx,int * besty){
     int new_score;
     for(int y=0;y<3;y++)
         for(int x=0;x<3;x++)
-            if(!get_at(plat,x,y))
+            if(!get_at(plat,x,y)) // if it's somewhere intersting
                 if(score < (new_score = minmax(put_at(plat,x,y,turn),!turn,NULL,NULL))){
                     if(bestx && besty){
                       *bestx = x;
                       *besty = y;
-                    }
+                    } // if it gives a better score, keep it
                     score = new_score;
                 }
-    return score;
+    return score; // return the score
 }
 
 void print_plato(plateau  plat){
