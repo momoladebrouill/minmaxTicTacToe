@@ -52,14 +52,24 @@ int minmax(plateau plat,int turn,int * bestx,int * besty){
     return score; // return the score
 }
 
-void print_plato(plateau  plat){
+/*void print_plato(plateau  plat){
     for(int y=0;y<3;y++){
         for(int x=0;x<3;x++)
             printf("%c ", " XO"[get_at(plat,x,y)]);
         printf("\n");
      }
+}*/
+void print_plato(plateau plat){
+    printf("   0 1 2\n");
+    printf("  +-+-+-+\n");
+    for(int y=0;y<3;y++){
+        printf("%d |", y);
+        for(int x=0;x<3;x++)
+            printf("%c|", " XO"[get_at(plat,x,y)]);
+        printf("\n");
+        printf("  +-+-+-+\n");
+     }
 }
-
 int main(void){
   plateau plato = 0;
   // REPL
